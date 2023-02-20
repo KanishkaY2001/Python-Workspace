@@ -1,7 +1,7 @@
 # Package Details
 
 * Array Searching Algorithms
-    * Linear Search
-    * Binary Search
-    * Jump Search
-    * Interpolation Search
+    * Linear Search         O(n)
+    * Binary Search         O(logn)
+    * Jump Search           O(sqrt(n))
+    * Interpolation Search  O(n)
