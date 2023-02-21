@@ -16,6 +16,7 @@
 
 * Tree Searching Algorithms
     * Depth-first search
+    * Iterative deepening DFS
     * Breadth-first search
     * Uniform-cost search
     * Greedy best-first search

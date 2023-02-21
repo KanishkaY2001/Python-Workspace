@@ -15,8 +15,7 @@ def search(el, arr):
         tar = arr[jump]
 
         # element found, return index
-        if el == tar:
-            return jump
+        if el == tar: return jump
 
         # perform linear search until found
         elif el < tar:
@@ -24,6 +23,8 @@ def search(el, arr):
 
             # search between last and current block
             sub = arr[lo : jump]
+
+            # element found return index using linear
             idx = linear.search(el, sub)
             return idx if idx == -1 else lo + idx
 

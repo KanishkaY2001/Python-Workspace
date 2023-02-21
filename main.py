@@ -2,13 +2,15 @@
 from projects.search import linear
 from projects.search import binary
 from projects.search import jump
+from projects.search import interpol
 
-el = 23
-arr = [2,4,6,8,10,19,23,44,101]
+el = 357
+arr = list(range(0,600,7))
 
-x = linear.search(el, arr)
-y = binary.search(el, arr)
-z = jump.search(el, arr)
+a = linear.search(el, arr)
+b = binary.search(el, arr)
+c = jump.search(el, arr)
+d = interpol.search(el, arr)
 
-assert x == y == z
-print(x)
+assert a == b == c == d
+print(d)
