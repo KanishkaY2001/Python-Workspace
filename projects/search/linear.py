@@ -1,10 +1,9 @@
 # linear search function
 def search(el, arr):
-    for idx, val in enumerate(arr):
-
-        # sequentially search until found
+    # sequentially search until found
+    for i, val in enumerate(arr):
         if val == el:
-            return idx
-
+            return i
+            
     # element does not exist return -1
     return -1
