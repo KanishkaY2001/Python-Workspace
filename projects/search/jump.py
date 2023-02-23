@@ -1,6 +1,6 @@
 # imports
 import math
-from projects.search import linear
+from search import linear
 
 # jump search function
 def search(el, arr):
