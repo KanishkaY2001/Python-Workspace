@@ -1,7 +1,7 @@
 # depth-first search function
-def search(grid, start, goal, vtd):
+def search(grid, start, goal, vtd=[]):
     
-    # add current box to visited
+    # add current tile to visited
     vtd.append(start)
 
     # if goal is reached then end
