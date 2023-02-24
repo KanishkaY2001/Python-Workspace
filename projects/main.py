@@ -15,8 +15,10 @@ assert a == b == c == d
 #print(d)
 
 
-grid = layout.grid(5,5)
+grid = layout.grid(4,2)
 grid.print()
 
-path = dfs.search(grid, 7, 23)
-print(f"DFS Path: {path}")
+
+print(f"DFS Path: {dfs.search(grid, -1, 7)}")
+print(f"BFS Path: {bfs.search(grid, 8, 7)}")
+#print(grid.is_valid(7))

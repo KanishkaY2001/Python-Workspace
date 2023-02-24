@@ -1,6 +1,5 @@
 # depth-first search function
-def search(grid, start, goal, vtd=[]):
-    
+def __search(grid, start, goal, vtd=[]):
     # add current tile to visited
     vtd.append(start)
 
@@ -13,8 +12,18 @@ def search(grid, start, goal, vtd=[]):
         if i in vtd: continue
 
         # if goal is found return path
-        if search(grid, i, goal, vtd):
+        if __search(grid, i, goal, vtd):
             return vtd
 
     # no path to goal exists
     return None
+
+# init function for dfs algorithm
+def search(grid, start, goal):
+    
+    # check if goal tile is valid
+    if not grid.valid_pair(start, goal):
+        return None
+    
+    # return dfs path to goal
+    return __search(grid, start, goal)
