@@ -5,13 +5,21 @@ class grid:
     def __init__(self, w, h):
         self.w = w
         self.h = h
-        self.end = w * h - 1
+        self.v = w * h
         self.mtx = [[w*i + v for v in range(w)] for i in range(h)]
 
     # pretty-print grid matrix
     def print(self):
-        for row in self.mtx:
-            print(row)
+        grid = self.mtx
+        x = len(str(self.v - 1))
+        for row in grid:
+            print("[", end = "")
+            l = len(row)
+            for i, num in enumerate(row):
+                if i == l - 1:
+                    print(f"{num:>0{x}d}", end="]\n")
+                else:
+                    print(f"{num:>0{x}d}", end=", ")
     
     # check if a tiles exists in grid
     def valid_pair(self, t1, t2):
@@ -35,17 +43,18 @@ class grid:
         # get tile to the left
         if x > 0:
             adj.append(tile - 1)
-
         # get tile to the right
         if x < self.w - 1:
             adj.append(tile + 1)
-
-        # get tile to the bottom
+        # get tile to the top
         if y > 0:
             adj.append(tile - self.w)
-
-        # get tile on the top
+        # get tile on the bottom
         if y < self.h - 1:
             adj.append(tile + self.w)
         
+        # returned as ↑ → ↓ ←
+        #    →
+        #   ↑ ↓
+        #    ←
         return adj

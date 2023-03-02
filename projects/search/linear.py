@@ -1,11 +1,11 @@
 # linear search function
-def search(el, arr):
+def search(goal, array):
     # sequentially search until found
-    for i, val in enumerate(arr):
+    for idx, item in enumerate(array):
 
         # element found return index
-        if val == el:
-            return i
+        if item == goal:
+            return idx
 
     # element does not exist return -1
     return -1

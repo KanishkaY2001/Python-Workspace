@@ -15,10 +15,23 @@ assert a == b == c == d
 #print(d)
 
 
-grid = layout.grid(4,2)
+
+
+
+
+
+d = 10
+grid = layout.grid(d, d)
 grid.print()
 
-
-print(f"DFS Path: {dfs.search(grid, -1, 7)}")
-print(f"BFS Path: {bfs.search(grid, 8, 7)}")
-#print(grid.is_valid(7))
+max_v = grid.v - 1
+g = grid.w * grid.h - 1
+start, goal = 0,99 # 5, 0, 19
+# 6 0 29
+# 0, 204
+#print(f"Optimal Len: {grid.w + grid.h - 1}")
+#print(f"DFS Path:   {dfs.search(grid, start, goal)}")
+print(f"BFS Path:   {len(bfs.search(grid, start, goal))}")
+#print(f"DLS Path:   {len(dls.search(grid, start, goal, 30))}")
+print(f"IDDFS Path: {len(iddfs.search(grid, start, goal))}")
+#print(f"FAKE Path:  {test.search(grid, start, goal)}")

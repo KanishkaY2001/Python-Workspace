@@ -1,23 +1,23 @@
 # binary search function
-def search(el, arr):
-    n = len(arr)
+def search(goal, array):
+    n = len(array)
 
     # bounds for search space
-    lo = 0
-    hi = n - 1
+    low = 0
+    high = n - 1
 
     # repeat until bounds converge
-    while hi >= lo or lo <= hi:
+    while high >= low or low <= high:
 
         # average value of bounds
-        mid = (hi + lo) // 2
-        tar = arr[mid]
+        mid = (high + low) // 2
+        item = array[mid]
 
         # reduce search space until found
-        if el < tar:
-            hi = mid - 1
-        elif el > tar:
-            lo = mid + 1
+        if goal < item:
+            high = mid - 1
+        elif goal > item:
+            low = mid + 1
         else: return mid
 
     # element does not exist return -1

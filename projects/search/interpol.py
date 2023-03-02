@@ -1,29 +1,32 @@
 # imports
 import math
 
+def get_probe(goal, arr, h, l):
+    return l + ((h - l) / (arr[h] - arr[l])) * (goal - arr[l])
+
 # interpolation search function
-def search(el, arr):
-    n = len(arr)
+def search(goal, array):
+    n = len(array)
 
     # bounds for search space
-    lo = 0
-    hi = n - 1
+    low = 0
+    high = n - 1
 
     # repeat until bound exceeds search element
-    while lo <= hi and el >= arr[lo] and el <= arr[hi]:
+    while low <= high and goal >= array[low] and goal <= array[high]:
 
         # calculate probe for search space
-        probe = lo + ((hi - lo) / (arr[hi] - arr[lo])) * (el - arr[lo])
+        probe = get_probe(goal, array, high, low)
         mid = math.floor(probe)
-        tar = arr[mid]
+        item = array[mid]
 
         # restrict search space to left-side
-        if tar > el:
-            hi = mid - 1
+        if item > goal:
+            high = mid - 1
 
         # restrict search space to right-side
-        elif tar < el:
-            lo = mid + 1
+        elif item < goal:
+            low = mid + 1
 
         # element found return index
         else: return mid

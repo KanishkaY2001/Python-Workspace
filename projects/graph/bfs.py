@@ -1,26 +1,38 @@
+# imports
+from graph import graph_helper as g_h
+
 # grid object for searching algorithms
-def search(grid, start, goal, vtd=[]):
+def search(grid, start, goal):
 
-    # check if goal tile is valid
-    if not grid.valid_pair(start, goal):
-        return None
+    # check if start/goal tiles are valid
+    if not grid.valid_pair(start, goal): return []
 
-    # initialize the queue
-    q = []
-    q.append(start)
+    # initialize the stack and visited set
+    queue = [start]
+    visited = set()
+
+    # contains parent->child node hierarchy
+    path_dict = {start: None}
     
-    while len(q) > 0:
-        # pop first tile and mark visited
-        top = q.pop(0)
-        vtd.append(top)
-        
-        # if goal is reached then end
-        if top == goal: break
+    while queue:
+        # pop first node from queue
+        node = queue.pop(0)
+        if node in visited: continue
 
-        # Add adj tiles to queue if unique
-        for v in grid.get_adj(top):
-            if v not in q and v not in vtd:
-                q.append(v)
+        # start to goal node is reached return path
+        if node == goal:
+            return g_h.dict_to_path(path_dict, node)
+
+        # add to visited set
+        visited.add(node)
+
+        # add adjacent nodes to queue
+        for adj in grid.get_adj(node):
+            if adj in visited: continue
+
+            # assign parent and add to queue
+            queue.append(adj)
+            path_dict[adj] = node
     
-    # return bfs path to goal
-    return vtd
+    # no path found return empty
+    return []
