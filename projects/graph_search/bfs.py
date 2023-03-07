@@ -1,11 +1,26 @@
-# imports
-from graph import graph_helper as g_h
+# converts parent->child hierarchy to path
+def dict_to_path(path_dict, goal):
+
+    # initialize path and set parent
+    path = []
+    parent = goal
+
+    # get path from goal -> start
+    while parent is not None:
+        path.append(parent)
+        parent = path_dict[parent]
+
+    # reverse to show start -> goal
+    path.reverse()
+    return path
+
 
 # grid object for searching algorithms
 def search(grid, start, goal):
 
-    # check if start/goal tiles are valid
-    if not grid.valid_pair(start, goal): return []
+    # check if goal and start tiles are valid
+    if not (grid.valid(start) and grid.valid(goal)):
+        return []
 
     # initialize the stack and visited set
     queue = [start]
@@ -21,7 +36,7 @@ def search(grid, start, goal):
 
         # start to goal node is reached return path
         if node == goal:
-            return g_h.dict_to_path(path_dict, node)
+            return dict_to_path(path_dict, node)
 
         # add to visited set
         visited.add(node)

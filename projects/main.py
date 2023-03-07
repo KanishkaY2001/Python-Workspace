@@ -1,8 +1,9 @@
 # imports
-from search import *
-from graph import *
+from graph_search import *
+from array_search import *
 
-
+# testing for array searching algorithms
+print("\ntesting for array searching algorithms")
 el = 357
 arr = list(range(0,600,7))
 
@@ -12,26 +13,20 @@ c = jump.search(el, arr)
 d = interpol.search(el, arr)
 
 assert a == b == c == d
-#print(d)
+print(f"array search idx: {d}\n")
 
 
-
-
-
-
-
-d = 10
+# testing for grid path finding algorithms
+print("testing for grid path finding algorithms")
+d = 8
 grid = layout.grid(d, d)
 grid.print()
 
 max_v = grid.v - 1
 g = grid.w * grid.h - 1
-start, goal = 0,99 # 5, 0, 19
-# 6 0 29
-# 0, 204
-#print(f"Optimal Len: {grid.w + grid.h - 1}")
-#print(f"DFS Path:   {dfs.search(grid, start, goal)}")
+start, goal = 0,63
+
+print(f"DFS Path:   {len(dfs.search(grid, start, goal))}")
 print(f"BFS Path:   {len(bfs.search(grid, start, goal))}")
-#print(f"DLS Path:   {len(dls.search(grid, start, goal, 30))}")
+print(f"DLS Path:   {len(dls.search(grid, start, goal, 14))}")
 print(f"IDDFS Path: {len(iddfs.search(grid, start, goal))}")
-#print(f"FAKE Path:  {test.search(grid, start, goal)}")

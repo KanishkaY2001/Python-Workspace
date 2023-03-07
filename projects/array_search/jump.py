@@ -1,6 +1,6 @@
 # imports
 import math
-from search import linear
+from array_search import linear
 
 # jump search function
 def search(goal, array):
